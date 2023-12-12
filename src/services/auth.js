@@ -2,8 +2,6 @@ const prisma = require('../lib/prisma');
 const bcrypt = require('bcrypt');
 const AuthenticationError = require('../exeptions/AuthenticationError');
 const { generateAccessToken } = require('../lib/token');
-const ClientError = require('../exeptions/ClientError');
-const { CONFLICT_ERR } = require('../constants/errorType');
 
 class AuthService {
   static async login({ email, password }) {

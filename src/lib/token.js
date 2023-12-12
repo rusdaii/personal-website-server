@@ -5,17 +5,17 @@ const {
   TOKEN_INVALID_ERR_MSG,
 } = require('../constants/errorMessage');
 const { TOKEN_ERR, TOKEN_EXPIRED_ERR } = require('../constants/errorType');
-const InvariantError = require('../exeptions/invariantError');
+const InvariantError = require('../exeptions/InvariantError');
 
 exports.createToken = ({ payload, secret, options }) =>
   jwt.sign(payload, secret, options);
 
-exports.generateAccessToken = ({ id, username }) => {
+exports.generateAccessToken = ({ id, role }) => {
   const accessToken = this.createToken({
-    payload: { id, username },
+    payload: { id, role },
     secret: process.env.ACCESS_TOKEN_SECRET_KEY,
     options: {
-      expiresIn: '7d',
+      expiresIn: '1d',
     },
   });
 
